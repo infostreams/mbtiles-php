@@ -1,4 +1,4 @@
-PHP TileServer
+﻿PHP TileServer
 
 Serves map tiles for interactive online maps à la Google Maps or Open Street Maps. You
 can use any map created by TileMill (or other software that produces .mbtiles files).
