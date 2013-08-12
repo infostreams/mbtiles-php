@@ -2,4 +2,12 @@ Options -Indexes
 Options +FollowSymLinks
 Options -MultiViews
 RewriteEngine On
+
+# directly serve static files and directories
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule "." - [skip=100]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule "." - [skip=100]
+
+# otherwise, serve with tileserver.php
 RewriteRule ^(.*)$ tileserver.php [QSA,L]
