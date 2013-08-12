@@ -41,6 +41,11 @@ $r->map(":layer/:z/:x/:y.:ext",
 		array("layer"=>$_identifier, "x"=>$_number, "y"=>$_number, "z"=>$_number, 
 			  "ext"=>"(png|jpg|jpeg|json)"));
 
+$r->map(":layer/:s/:z/:x/:y.:ext",
+		array("controller"=>"maptile", "action"=>"serveTile"), 
+		array("layer"=>$_identifier, "x"=>$_number, "y"=>$_number, "z"=>$_number, 
+			  "ext"=>"(png|jpg|jpeg|json)"));
+
 $r->map(":layer/:z/:x/:y.:ext\?:argument=:callback",
 		array("controller"=>"maptile", "action"=>"serveTile"), 
 		array("layer"=>$_identifier, "x"=>$_number, "y"=>$_number, "z"=>$_number, 
