@@ -2,4 +2,6 @@ Options -Indexes
 Options +FollowSymLinks
 Options -MultiViews
 RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^(.*)$ tileserver.php [QSA,L]
