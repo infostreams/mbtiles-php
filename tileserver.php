@@ -36,12 +36,30 @@ $r->map("1.0.0/:layer/:z/:x/:y.:ext",
 		array("layer"=>$_identifier, "x"=>$_number, "y"=>$_number, "z"=>$_number, 
 			  "ext"=>"(png|jpg|jpeg|json)"));
 
+/* Quick-and-dirty hack for issue #15 */
+$r->map(":layer/:z/:x/:y\@2x.:ext\?:argument=:callback",
+		array("controller"=>"maptile", "action"=>"serveTile"), 
+		array("layer"=>$_identifier, "x"=>$_number, "y"=>$_number, "z"=>$_number, 
+			  "ext"=>"(json|jsonp)", "argument"=>$_identifier, "callback"=>$_identifier));
+
 $r->map(":layer/:z/:x/:y.:ext",
 		array("controller"=>"maptile", "action"=>"serveTile"), 
 		array("layer"=>$_identifier, "x"=>$_number, "y"=>$_number, "z"=>$_number, 
 			  "ext"=>"(png|jpg|jpeg|json)"));
 
+/* Quick-and-dirty hack for issue #15 */
+$r->map(":layer/:z/:x/:y\@2x.:ext",
+		array("controller"=>"maptile", "action"=>"serveTile"), 
+		array("layer"=>$_identifier, "x"=>$_number, "y"=>$_number, "z"=>$_number, 
+			  "ext"=>"(png|jpg|jpeg|json)"));
+
 $r->map(":layer/:z/:x/:y.:ext\?:argument=:callback",
+		array("controller"=>"maptile", "action"=>"serveTile"), 
+		array("layer"=>$_identifier, "x"=>$_number, "y"=>$_number, "z"=>$_number, 
+			  "ext"=>"(json|jsonp)", "argument"=>$_identifier, "callback"=>$_identifier));
+
+/* Quick-and-dirty hack for issue #15 */
+$r->map(":layer/:z/:x/:y\@2x..:ext\?:argument=:callback",
 		array("controller"=>"maptile", "action"=>"serveTile"), 
 		array("layer"=>$_identifier, "x"=>$_number, "y"=>$_number, "z"=>$_number, 
 			  "ext"=>"(json|jsonp)", "argument"=>$_identifier, "callback"=>$_identifier));
